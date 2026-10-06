@@ -8,3 +8,5 @@
 - Checkpoints inspected with torch.load(weights_only=True, map_location="cpu"). Only state_dict and model/probe metadata keys present; no dataset fields.
 - HF asset manifest: 35 files, 8,056,735,510 bytes excluding model card/license/asset index. Model/checkpoint bytes unchanged. Package manifests declare historical slots=none and Hub-relative paths.
 - No retraining, dataset download, hosted inference or new Core ML/ANE prediction performed. Historical benchmark results retain their original scope.
+- Explicit pure-math parity selection: 2 PASS, 10 deselected.
+- GitHub portable CI passed on initial public commit 71dfa0a2aee347cec09771c7122382ed21dbdfdc: https://github.com/eightman999/open-jev-coreml/actions/runs/37436254385 .
