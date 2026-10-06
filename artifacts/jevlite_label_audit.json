@@ -1,0 +1,311 @@
+{
+  "dataset": "LocalLLaMA/typed-decisions",
+  "splits": {
+    "train": {
+      "n_rows": 1200,
+      "per_type": {
+        "choice": {
+          "n_questions": 1800,
+          "n_labels": 7800,
+          "top_label_names": [
+            [
+              "continue",
+              300
+            ],
+            [
+              "human_review",
+              300
+            ],
+            [
+              "observe",
+              300
+            ],
+            [
+              "stop",
+              300
+            ],
+            [
+              "failure",
+              300
+            ],
+            [
+              "harmful",
+              300
+            ],
+            [
+              "partial",
+              300
+            ],
+            [
+              "success",
+              300
+            ],
+            [
+              "answer_directly",
+              300
+            ],
+            [
+              "close_no_action",
+              300
+            ],
+            [
+              "escalate_to_human",
+              300
+            ],
+            [
+              "execute_refund",
+              300
+            ],
+            [
+              "request_information",
+              300
+            ],
+            [
+              "account",
+              300
+            ],
+            [
+              "billing",
+              300
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.2283636888888889,
+            "1": 0.20532424055555556,
+            "2": 0.3608125572222222,
+            "3": 0.12714878500000001,
+            "4": 0.23505218
+          },
+          "argmax_count_by_position": {
+            "0": 349,
+            "1": 364,
+            "2": 809,
+            "3": 155,
+            "4": 123
+          },
+          "has_uncertain_label": false
+        },
+        "noul": {
+          "n_questions": 1800,
+          "n_labels": 3600,
+          "top_label_names": [
+            [
+              "false",
+              1800
+            ],
+            [
+              "true",
+              1800
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.5322514788888889,
+            "1": 0.4677485211111111
+          },
+          "argmax_count_by_position": {
+            "0": 924,
+            "1": 876
+          },
+          "has_uncertain_label": false
+        },
+        "score": {
+          "n_questions": 2400,
+          "n_labels": 9900,
+          "top_label_names": [
+            [
+              "0",
+              2400
+            ],
+            [
+              "1",
+              2400
+            ],
+            [
+              "2",
+              2400
+            ],
+            [
+              "3",
+              2400
+            ],
+            [
+              "4",
+              300
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.14822207666666667,
+            "1": 0.24982484875000002,
+            "2": 0.30354315291666667,
+            "3": 0.2792124133333333,
+            "4": 0.15358030666666667
+          },
+          "argmax_count_by_position": {
+            "0": 304,
+            "1": 623,
+            "2": 728,
+            "3": 712,
+            "4": 33
+          },
+          "has_uncertain_label": false
+        }
+      }
+    },
+    "validation": {
+      "error": "ValueError: Unknown split \"validation\". Should be one of ['train', 'test']."
+    },
+    "test": {
+      "n_rows": 400,
+      "per_type": {
+        "choice": {
+          "n_questions": 600,
+          "n_labels": 2600,
+          "top_label_names": [
+            [
+              "continue",
+              100
+            ],
+            [
+              "human_review",
+              100
+            ],
+            [
+              "observe",
+              100
+            ],
+            [
+              "stop",
+              100
+            ],
+            [
+              "failure",
+              100
+            ],
+            [
+              "harmful",
+              100
+            ],
+            [
+              "partial",
+              100
+            ],
+            [
+              "success",
+              100
+            ],
+            [
+              "answer_directly",
+              100
+            ],
+            [
+              "close_no_action",
+              100
+            ],
+            [
+              "escalate_to_human",
+              100
+            ],
+            [
+              "execute_refund",
+              100
+            ],
+            [
+              "request_information",
+              100
+            ],
+            [
+              "account",
+              100
+            ],
+            [
+              "billing",
+              100
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.22480676500000002,
+            "1": 0.20621473666666668,
+            "2": 0.3430913666666667,
+            "3": 0.14781637166666667,
+            "4": 0.23421234
+          },
+          "argmax_count_by_position": {
+            "0": 124,
+            "1": 121,
+            "2": 238,
+            "3": 73,
+            "4": 44
+          },
+          "has_uncertain_label": false
+        },
+        "noul": {
+          "n_questions": 600,
+          "n_labels": 1200,
+          "top_label_names": [
+            [
+              "false",
+              600
+            ],
+            [
+              "true",
+              600
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.5302716666666667,
+            "1": 0.4697283333333333
+          },
+          "argmax_count_by_position": {
+            "0": 304,
+            "1": 296
+          },
+          "has_uncertain_label": false
+        },
+        "score": {
+          "n_questions": 800,
+          "n_labels": 3300,
+          "top_label_names": [
+            [
+              "0",
+              800
+            ],
+            [
+              "1",
+              800
+            ],
+            [
+              "2",
+              800
+            ],
+            [
+              "3",
+              800
+            ],
+            [
+              "4",
+              100
+            ]
+          ],
+          "mean_target_by_position": {
+            "0": 0.16294918875,
+            "1": 0.2304438475,
+            "2": 0.3085706725,
+            "3": 0.280761295,
+            "4": 0.1382
+          },
+          "argmax_count_by_position": {
+            "0": 125,
+            "1": 164,
+            "2": 253,
+            "3": 248,
+            "4": 10
+          },
+          "has_uncertain_label": false
+        }
+      }
+    }
+  },
+  "position_mapping": {
+    "note": "no class index exists; sorted criteria position is the index end-to-end (iter_labels -> encode label_pos -> gather -> softmax -> decide dict key)"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "head": {
+    "shared_head": true,
+    "note": "single Linear(d,1) scores every <<l>> position; per-class head collapse is structurally impossible",
+    "weight_shape": [
+      1,
+      768
+    ],
+    "bias": -0.019081352278590202,
+    "weight_l2": 0.3998234272003174,
+    "weight_mean": 5.831761518493295e-05,
+    "weight_std": 0.014436667785048485
+  },
+  "logit_stats_on_judgebench": {
+    "candidate_a": {
+      "n": 60,
+      "mean": -0.8479126560191313,
+      "median": -0.7624232172966003,
+      "max": -0.08486874401569366,
+      "min": -1.8918298482894897
+    },
+    "candidate_b": {
+      "n": 60,
+      "mean": 0.4877601316819588,
+      "median": 0.5942370295524597,
+      "max": 1.274397373199463,
+      "min": -1.1165413856506348
+    },
+    "uncertain": {
+      "n": 60,
+      "mean": 0.7857386708259583,
+      "median": 0.7789767980575562,
+      "max": 1.7534648180007935,
+      "min": -0.23331165313720703
+    }
+  }
+}

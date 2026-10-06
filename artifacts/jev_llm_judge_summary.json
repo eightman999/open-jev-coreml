@@ -1,0 +1,126 @@
+{
+  "n_cases": 400,
+  "n_judged_pairs": 400,
+  "swap_consistency": 0.9975,
+  "consistent": 399,
+  "inconsistent": 1,
+  "position_A_rate_decided": 0.50125,
+  "position_B_rate_decided": 0.49875,
+  "failures": {},
+  "preference_counts_all": {
+    "jev": 399
+  },
+  "preference_counts_stable": {
+    "jev": 399
+  },
+  "acceptability": {
+    "jev": {
+      "acceptable": 399,
+      "n_scored": 399,
+      "acceptable_rate": 1.0,
+      "acceptable_rate_stable": 1.0
+    },
+    "jevlite": {
+      "acceptable": 0,
+      "n_scored": 399,
+      "acceptable_rate": 0.0,
+      "acceptable_rate_stable": 0.0
+    }
+  },
+  "uncertain_analysis": {
+    "jevlite_uncertain_total": 400,
+    "uncertain_judged_acceptable": 0,
+    "uncertain_judged_unacceptable": 399,
+    "uncertain_ambiguous": 0,
+    "jev_choice_on_uncertain_cases": {
+      "noise": 399,
+      "content": 1
+    }
+  },
+  "truncation_analysis": {
+    "<=1024": {
+      "n": 397,
+      "jevlite_uncertain_rate": 1.0,
+      "jev_acceptable_rate": 1.0,
+      "jevlite_acceptable_rate": 0.0,
+      "judge_ambiguous_rate": 0.0,
+      "mean_judge_confidence": 1.0
+    },
+    ">1024": {
+      "n": 3,
+      "jevlite_uncertain_rate": 1.0,
+      "jev_acceptable_rate": 1.0,
+      "jevlite_acceptable_rate": 0.0,
+      "judge_ambiguous_rate": 0.0,
+      "mean_judge_confidence": 1.0
+    },
+    "0-512": {
+      "n": 0
+    },
+    "513-1024": {
+      "n": 397,
+      "jevlite_uncertain_rate": 1.0,
+      "jev_acceptable_rate": 1.0,
+      "jevlite_acceptable_rate": 0.0,
+      "judge_ambiguous_rate": 0.0,
+      "mean_judge_confidence": 1.0
+    },
+    "1025-1536": {
+      "n": 3,
+      "jevlite_uncertain_rate": 1.0,
+      "jev_acceptable_rate": 1.0,
+      "jevlite_acceptable_rate": 0.0,
+      "judge_ambiguous_rate": 0.0,
+      "mean_judge_confidence": 1.0
+    },
+    "1537+": {
+      "n": 0
+    }
+  },
+  "by_judge": {
+    "gemma-4-31b-it": {
+      "n": 400,
+      "stable": 399,
+      "consistent": 399,
+      "preferences": {
+        "jev": 399
+      },
+      "mean_confidence": 1.0
+    }
+  },
+  "judge_perf": {
+    "n_calls": 800,
+    "sum_latency_s": 5713.1,
+    "mean_latency_s": 7.14,
+    "p50_latency_s": 7.1,
+    "p95_latency_s": 10.22,
+    "prompt_tokens_total": 643718,
+    "completion_tokens_total": 96681
+  },
+  "second_judge": {
+    "file": "artifacts/jev_llm_judge_raw.qwen30b.jsonl",
+    "compared": 16,
+    "agree": 0,
+    "disagree": 16
+  },
+  "stable_silver_n": 399,
+  "review_required_n": 1,
+  "review_reason_dist": {
+    "inconsistent": 1
+  },
+  "meta": {
+    "model": "gemma-4-31b-it",
+    "endpoint_host": "hai-api.hcloud.ltd",
+    "temperature": 0.0,
+    "passes": 2,
+    "prompt_file": "bench/prompts/llm_silver_judge_v1.txt",
+    "prompt_sha256": "bca4cde3e24461068fba7457c4aa3166c82129e2f2afc82105fc7950f6ae0f9d",
+    "review_file_sha256": "bf0acddabc0fbb5d72ef187d540136f32e3cee4a3dbe3ad2386716ce4d7e501a",
+    "conf_threshold": 0.75,
+    "swap_salt": "silver-judge-v1",
+    "git_commit": "446262a",
+    "host": "EMBP.local",
+    "created": "2026-09-21 22:34:12",
+    "labels_are": "LLM-generated silver labels - NOT human gold"
+  }
+}

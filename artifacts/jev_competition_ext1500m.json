@@ -1,0 +1,224 @@
+{
+  "level1_paired_agreement": {
+    "paired_n": 14046,
+    "unpaired_or_failed": 0,
+    "agreement": 0.0009967250462765201,
+    "disagreement_n": 14032,
+    "confusion_jev_x_jevlite": {
+      "content": {
+        "content": 1,
+        "noise": 2,
+        "uncertain": 4106
+      },
+      "noise": {
+        "content": 41,
+        "noise": 13,
+        "uncertain": 9883
+      },
+      "uncertain": {
+        "content": 0,
+        "noise": 0,
+        "uncertain": 0
+      }
+    },
+    "jev_verdict_dist": {
+      "content": 4109,
+      "noise": 9937,
+      "uncertain": 0
+    },
+    "jevlite_verdict_dist": {
+      "content": 42,
+      "noise": 15,
+      "uncertain": 13989
+    },
+    "confidence_agree": {
+      "n": 14,
+      "mean": 0.4943428571428572,
+      "median": 0.48619999999999997,
+      "p10": 0.42597,
+      "p90": 0.5756500000000001
+    },
+    "confidence_disagree": {
+      "n": 14032,
+      "mean": 0.8523016889965792,
+      "median": 0.8849,
+      "p10": 0.70381,
+      "p90": 0.95229
+    },
+    "confidence_hist_agree": {
+      "0.00-0.50": 8,
+      "0.50-0.60": 5,
+      "0.60-0.70": 1,
+      "0.70-0.80": 0,
+      "0.80-0.90": 0,
+      "0.90-0.95": 0,
+      "0.95-1.01": 0
+    },
+    "confidence_hist_disagree": {
+      "0.00-0.50": 219,
+      "0.50-0.60": 334,
+      "0.60-0.70": 797,
+      "0.70-0.80": 1865,
+      "0.80-0.90": 4929,
+      "0.90-0.95": 4311,
+      "0.95-1.01": 1577
+    },
+    "tvd_probs_mean": 0.8321167805781006,
+    "truncated_inputs": 5743,
+    "agreement_reliability": {
+      "0.00-0.50": {
+        "n": 227,
+        "agree_frac": 0.03524229074889868
+      },
+      "0.50-0.60": {
+        "n": 339,
+        "agree_frac": 0.014749262536873156
+      },
+      "0.60-0.70": {
+        "n": 798,
+        "agree_frac": 0.0012531328320802004
+      },
+      "0.70-0.80": {
+        "n": 1865,
+        "agree_frac": 0.0
+      },
+      "0.80-0.90": {
+        "n": 4929,
+        "agree_frac": 0.0
+      },
+      "0.90-0.95": {
+        "n": 4311,
+        "agree_frac": 0.0
+      },
+      "0.95-1.01": {
+        "n": 1577,
+        "agree_frac": 0.0
+      }
+    }
+  },
+  "routing_table": [
+    {
+      "threshold": 0.6,
+      "local_frac": 0.9597038302719636,
+      "agreement_local": 7.41839762611276e-05,
+      "escalated_frac": 0.0402961697280364
+    },
+    {
+      "threshold": 0.7,
+      "local_frac": 0.9028905026342019,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.0971094973657981
+    },
+    {
+      "threshold": 0.8,
+      "local_frac": 0.770112487540937,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.22988751245906303
+    },
+    {
+      "threshold": 0.9,
+      "local_frac": 0.4191940766054393,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.5808059233945607
+    },
+    {
+      "threshold": 0.95,
+      "local_frac": 0.11227395699843372,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.8877260430015663
+    }
+  ],
+  "meta": {
+    "created": "2026-09-21 19:38:51 +0900",
+    "backend": "coreml:cpu_and_ne",
+    "coreml_mode": "worker",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.11",
+      "machine": "arm64",
+      "hw_model": "Mac14,6"
+    },
+    "seed": 42,
+    "warmup": 50,
+    "batch_size": 1,
+    "timing_includes_tokenization": true,
+    "inputs": [
+      {
+        "path": "<local-path>",
+        "n": 14046,
+        "sha256": "b82ee93b6ac138f3e470a330830e5edb77947d4a44e156e83be006373dd08cf7"
+      }
+    ],
+    "jev_results": [
+      {
+        "path": "<local-path>",
+        "n": 14046,
+        "sha256": "04445b96de9e5782a9faf4270f501be46c095c532fcf218d5019f0e4d834a124"
+      }
+    ],
+    "jev_duplicate_queue_ids": 0,
+    "task_semantics": {
+      "source": "novllm tools/judge_jev.py (Jev systemone payload)",
+      "source_sha256": "33339e674d66ef81b2d71567f85019c16d735848f175abd4cd86c9ed4f999919",
+      "instructions": "あなたは小説テキストのコーパス浄化判定器です。state は小説レコードの末尾付近の抜粋で、「候補区間」は除去候補としてマークされた範囲です。確認事項に基づき候補区間が何であるかを一つ選んでください。本文の要約・引用・再生成は不要です。",
+      "criteria": {
+        "noise": "除去すべき取得ノイズ: サイト案内文・ランキング/ブックマーク/評価の呼びかけ・作者の宣伝や前書き後書き・奥付メタデータ・ナビゲーション文字列など",
+        "content": "物語・本文の一部として残すべき文章",
+        "uncertain": "情報不足や境界が曖昧で判断できないもの"
+      },
+      "state_template": "対象レコード: {id} (category={cat})\\n確認事項: {q}\\n候補区間: 文字 {s}〜{e}\\n\\n{ctx[:6000]}",
+      "jevlite_mapping": "Question.choice(INSTR + '確認事項: ' + question, CRITERIA) - identical payload",
+      "known_differences": "Jev saw ctx[:6000] chars; JevLite encodes <=1024 tokens so long states lose tail characters (counted in truncated_inputs)"
+    },
+    "engine": {
+      "engine": "WorkerCoreMLEngine",
+      "compute_units": "cpu_and_ne",
+      "encoder": "answerdotai/ModernBERT-base",
+      "encode_len": 1024
+    },
+    "items_out": "artifacts/jev_items_ext1500m_cpu_and_ne.jsonl"
+  },
+  "level3_systems": {
+    "backend": {
+      "engine": "WorkerCoreMLEngine",
+      "compute_units": "cpu_and_ne",
+      "encoder": "answerdotai/ModernBERT-base",
+      "encode_len": 1024
+    },
+    "load_s": 33.00118691602256,
+    "n_total": 14046,
+    "n_ok": 14046,
+    "n_failed": 0,
+    "wall_s": 1624.6466057089856,
+    "decisions_per_s": 8.645572489821818,
+    "chars_per_s": 8502.86760915097,
+    "tokens_per_s": 7758.3746247999725,
+    "latency_ms": {
+      "p50": 112.32014605775476,
+      "p90": 114.30639546597376,
+      "p95": 115.51089596468955,
+      "p99": 118.96486073965205,
+      "mean": 115.64345658564086,
+      "max": 39099.89020798821
+    },
+    "cold_warmup_latency_ms": {
+      "n": 50,
+      "mean": 116.71367751434445,
+      "median": 113.52893803268671,
+      "p10": 112.16355413198471,
+      "p90": 120.16197495395318
+    },
+    "worker_restarts": 0,
+    "worker_recycles": 1,
+    "worker_stats": {
+      "ok": true,
+      "calls": 4046,
+      "uptime_s": 460.9984635839937,
+      "rss_bytes": 240664576,
+      "keepalive_len": 4046
+    },
+    "rss_parent_before": 575422464,
+    "rss_parent_after": 116391936,
+    "rss_parent_delta_mb": -459.030528
+  }
+}

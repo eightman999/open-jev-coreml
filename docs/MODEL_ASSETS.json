@@ -1,0 +1,189 @@
+{
+  "model_repository": "eightman999/open-jev-coreml",
+  "license": "apache-2.0",
+  "checkpoint_format": "PyTorch state_dict plus metadata; load with weights_only=True",
+  "checkpoint_serialization": {
+    "jevlite.pt": "none (historical flat layout; slots absent in original checkpoint)",
+    "experimental/diag_flat.pt": "none",
+    "experimental/diag_lead.pt": "lead",
+    "other_experimental": "diagnostic probes; use bench/posprior_probe.py with the documented serialization"
+  },
+  "coreml_manifest_changes": "Package manifests declare slots=none and Hub-relative paths; model binaries and checkpoints unchanged. Packages correspond to original jevlite.pt, not diagnostic retrains.",
+  "files": [
+    {
+      "path": "coreml/manifest.json",
+      "bytes": 545,
+      "sha256": "23df2547a705fdac543ebdc62383c84ee8b7afddc823807fa960a3fb2f05e2cd"
+    },
+    {
+      "path": "coreml-fp32/manifest.json",
+      "bytes": 560,
+      "sha256": "a8d4b2e2a611ecce905f2f007d126720b6706e8f39d5e79adc2027e4f9fabe11"
+    },
+    {
+      "path": "experimental/diag_flat.pt",
+      "bytes": 596122891,
+      "sha256": "1b9bbcb9fd73bba719ab16a7a806c175eeee77797c382966db29230363248f50"
+    },
+    {
+      "path": "experimental/diag_lead.pt",
+      "bytes": 596122891,
+      "sha256": "65f8a14a6510ff6784c275cbaf5abed27e80849cbc2b0b8e34ba230b087a9eb3"
+    },
+    {
+      "path": "experimental/jevlite-smoke.pt",
+      "bytes": 596123399,
+      "sha256": "61d201d4d7f7c9640df632248883c1f2a388449af579ab2ca5540b7f7f2b3926"
+    },
+    {
+      "path": "experimental/posprior_a.pt",
+      "bytes": 596123098,
+      "sha256": "f5a78149c94502fe92cd8078dd84fe67665f5e290c763f013a2a2e2c3b950291"
+    },
+    {
+      "path": "experimental/posprior_a_full.pt",
+      "bytes": 596123813,
+      "sha256": "0a2cceca09f8e771a9b0d48cedda84074d34cf774d342e22f0b0ba9694f01eb2"
+    },
+    {
+      "path": "experimental/posprior_frozen_lead.pt",
+      "bytes": 596124528,
+      "sha256": "04257a3f585c7e7d28a7594b515d9a4aafa222da34f92f0831907dbe23a63fd2"
+    },
+    {
+      "path": "experimental/posprior_full_lead.pt",
+      "bytes": 596124242,
+      "sha256": "d350c46891e70b1996f32d410662c8d896ec0362c8a02ef12e46080139d76735"
+    },
+    {
+      "path": "experimental/posprior_partial4_lead.pt",
+      "bytes": 596124878,
+      "sha256": "df09c574e97595e4d9bb23930806b6c21878d3418448d79a34f7a537ae52408f"
+    },
+    {
+      "path": "jevlite.pt",
+      "bytes": 596122093,
+      "sha256": "6706cde76732e44f6eab38411514d45e72703f8d40d4de162e7846358c88bb4c"
+    },
+    {
+      "path": "coreml/jevlite-1024.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 1371133,
+      "sha256": "f1a77098d6db8c3be04c9951d20178db6ab5f46ff0b3edff857663a6a641f31f"
+    },
+    {
+      "path": "coreml/jevlite-1024.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 298576832,
+      "sha256": "22edbe207c97643d73e5e621a61575f462a79f0d2dd1a683d67b32cfdc90aa07"
+    },
+    {
+      "path": "coreml/jevlite-1024.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "7d6c81fff6e9ec7d1aa4109f6012dbdaf810d884f2cbdde4c1d7055ddec7c9d5"
+    },
+    {
+      "path": "coreml/jevlite-1024.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 315468,
+      "sha256": "64025840966c45c73d5225daae4aaae8f53d145a7c9a7712c2da255ab1027f69"
+    },
+    {
+      "path": "coreml/jevlite-256.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 387322,
+      "sha256": "fe1b17ee9b39f4a7d09010f020fbb13a61201b1e5136e3415bc8b3b9f2c5852a"
+    },
+    {
+      "path": "coreml/jevlite-256.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 298180544,
+      "sha256": "cca7a1cced9dd2190d1507570ece74467d6a03a6e163da77aa132d12626125dc"
+    },
+    {
+      "path": "coreml/jevlite-256.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "7bd4b3b210af8441fa55683fa547409c772d7d1f72f805e9d17d2926de684456"
+    },
+    {
+      "path": "coreml/jevlite-256.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 315468,
+      "sha256": "64025840966c45c73d5225daae4aaae8f53d145a7c9a7712c2da255ab1027f69"
+    },
+    {
+      "path": "coreml/jevlite-512.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 584186,
+      "sha256": "c6bdede89c44c2f397fed6ae2f19ce4ae909f010778c1f5ad1dd26261964b6c1"
+    },
+    {
+      "path": "coreml/jevlite-512.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 298312640,
+      "sha256": "06b058a140ebae6d1d3971de63da95182021d0b5864f7dd707c30c2ed4dea34b"
+    },
+    {
+      "path": "coreml/jevlite-512.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "7d859f175f1921e72ad098f145c830072ae29a0fb0afa33cb2a0a6cd29fc2880"
+    },
+    {
+      "path": "coreml/jevlite-512.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 315468,
+      "sha256": "64025840966c45c73d5225daae4aaae8f53d145a7c9a7712c2da255ab1027f69"
+    },
+    {
+      "path": "coreml-fp32/jevlite-1024.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 1334846,
+      "sha256": "5cc48133c493088aa9ccb51c26062eca17f71eb0151db398b67f4180c0798d73"
+    },
+    {
+      "path": "coreml-fp32/jevlite-1024.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 597144512,
+      "sha256": "414bc45dcbf737e5338e12d5b8ca79fe31b059e5876734e24fa0fc536ffc8c4d"
+    },
+    {
+      "path": "coreml-fp32/jevlite-1024.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "0eca85d335cc511b1336d62f966a8bfabaef8d9d3391ebbb47d2b1d646d73b16"
+    },
+    {
+      "path": "coreml-fp32/jevlite-1024.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 304483,
+      "sha256": "ce165a57963636a39a03c838d7e672eb5525672c87ec4b4f2406bc3c21cc4b22"
+    },
+    {
+      "path": "coreml-fp32/jevlite-256.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 351037,
+      "sha256": "a5fd895e3c6bad52e22ccdd4d63c8904e80df5c41e6a1ffd10c974337787ecdf"
+    },
+    {
+      "path": "coreml-fp32/jevlite-256.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 596351936,
+      "sha256": "b7694c59189c224bcfb4f010d0f920cf19cf03c79256dedfa2255e587f9b4eef"
+    },
+    {
+      "path": "coreml-fp32/jevlite-256.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "735214ede2746e8092a72fed2bf2c352b11a1a6c3ea7edd7747e7bb0141be9e1"
+    },
+    {
+      "path": "coreml-fp32/jevlite-256.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 304483,
+      "sha256": "ce165a57963636a39a03c838d7e672eb5525672c87ec4b4f2406bc3c21cc4b22"
+    },
+    {
+      "path": "coreml-fp32/jevlite-512.mlpackage/Data/com.apple.CoreML/model.mlmodel",
+      "bytes": 547901,
+      "sha256": "e027f9e4a1539f8aee14367eca36c4dd1f33feea26c2f6a437c5ece276aede25"
+    },
+    {
+      "path": "coreml-fp32/jevlite-512.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+      "bytes": 596616128,
+      "sha256": "6e9022caaac23d80dbf6ff37322db590a850c867f11c96774a8c29e944081705"
+    },
+    {
+      "path": "coreml-fp32/jevlite-512.mlpackage/Manifest.json",
+      "bytes": 617,
+      "sha256": "c8ee6dda038ba38a8b83a0836ece32ab9a358a2f71fe7c5b9fd9c13df20ad3ac"
+    },
+    {
+      "path": "coreml-fp32/jevlite-512.mlpackage/executorch_debug_handle_mapping.json",
+      "bytes": 304483,
+      "sha256": "ce165a57963636a39a03c838d7e672eb5525672c87ec4b4f2406bc3c21cc4b22"
+    }
+  ]
+}

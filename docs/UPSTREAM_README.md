@@ -1,0 +1,297 @@
+<div align="center">
+
+<img src="header.svg" alt="Open Jev - a typed decision engine you can train for free. 0.697 accuracy against TypeSafe Jev's 0.727, 2.5x better calibrated, 4x faster, zero cost." width="100%">
+
+# Open Jev — a typed decision engine you can train for free
+
+**A 150M encoder that answers arbitrary typed questions about a state in one forward pass, with calibrated confidence. 0.03 behind TypeSafe Jev on its own benchmark, 2.5× better calibrated, 4× faster, $0.**
+
+[![License](https://img.shields.io/badge/license-Apache%202.0-2a78d6?style=for-the-badge)](../LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-2a78d6?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Colab](https://img.shields.io/badge/train%20on-free%20T4-eb6834?style=for-the-badge&logo=googlecolab&logoColor=white)](../jevlite_colab.ipynb)
+[![Benchmark](https://img.shields.io/badge/benchmark-typed--decisions-1baf7a?style=for-the-badge)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)
+
+[Results](#results) · [How it works](#how-it-works) · [Quick start](#quick-start) · [What we learned](#what-the-runs-actually-proved) · [Limitations](#limitations)
+
+</div>
+
+---
+
+## What this is
+
+[TypeSafe AI's **Jev**](https://www.mindstudio.ai/blog/jev-system-one-model-launch) (launched 2026-09-15) is a "System One" model: it never writes prose, it only **decides, classifies, routes and scores**. You hand it a state plus a set of typed questions and it answers all of them in one non-autoregressive pass, with a confidence on each. $0.042/1M input, output tokens free, ~239 ms per call.
+
+This repo reproduces that interface with an open 150M encoder you can train on a free Colab T4 in under 30 minutes, then run locally — or in a browser — for nothing.
+
+> **TypeSafe does not publish Jev's parameter count.** This model is 150M. Their [published specs](https://docs.typesafe.ai/models) give pricing, rate limits and a 64k context window, but no model size — and their launch FAQ lists *"Is Jev just a smaller LLM?"* without answering it. Any size comparison you see, including here, is inference from price and latency rather than a disclosed figure.
+
+Three primitives, matching theirs:
+
+| type | meaning | criteria format |
+|---|---|---|
+| `noul` | boolean | `{"true": desc, "false": desc}`, or omitted entirely |
+| `choice` | enum | `{label: desc, ...}` |
+| `score` | ordered scale | `[level_0, level_1, ...]` |
+
+```python
+decide(state, {
+    "action": Question.choice("What should the observability system do?", {
+        "continue": "Let the agent proceed.",
+        "human_review": "Queue this trace for a human.",
+        "stop": "Halt the agent now."}),
+    "risk": Question.score("How risky was this behaviour?", [
+        "Benign: read-only.", "Low: routine writes.",
+        "Moderate: irreversible.", "High: destructive."]),
+})
+# -> {"action": {"label": "human_review", "confidence": 0.54, "probabilities": {...}},
+#     "risk":   {"label": "2",            "confidence": 0.47, "probabilities": {...}}}
+```
+
+The questions are supplied **per request**. Nothing about the schema is baked into the weights.
+
+---
+
+## Results
+
+Measured on the official 400-case test split of [`LocalLLaMA/typed-decisions`](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) (2,000 decisions across four workflows). Blend weight and temperature were chosen on validation, never on test.
+
+| configuration | accuracy | ECE ↓ | schema |
+|---|---|---|---|
+| Fine-tuned model alone | 0.6240 | 0.1045 | **dynamic** |
+| Frozen probe alone | 0.6705 | **0.0389** | fixed |
+| **Ensemble** (w=0.60, T=0.35) | **0.6965** | 0.0565 | fixed |
+| TypeSafe Jev 1.13.0 | **0.7270** | 0.1440 | dynamic |
+| *majority-class baseline* | *0.4830* | — | — |
+| *single human annotator* | *0.6590* | — | — |
+
+**0.03 behind Jev on accuracy. 2.5× better calibrated. ~60 ms per case locally against their 239 ms p50. Free, offline, open weights.**
+
+<img src="charts/1_scoreboard.png" alt="Bar chart of accuracy on the typed-decisions test split: majority class 0.483, fine-tuned model 0.620, single annotator 0.659, frozen probe 0.670, this repo's ensemble 0.697, against a dashed reference line at TypeSafe Jev's 0.727." width="100%">
+
+### Can you route on the confidence?
+
+This is the question that decides whether a decision model is usable. Ensemble, on test:
+
+| confidence ≥ | coverage | accuracy |
+|---|---|---|
+| 0.90 | 25.4% | **0.915** |
+| 0.80 | 44.5% | 0.846 |
+| 0.70 | 61.7% | 0.806 |
+| 0.50 | 91.9% | 0.726 |
+
+A quarter of all decisions at 91.5% accuracy is a shippable policy: autoroute that band, escalate the rest.
+
+<img src="charts/4_coverage.png" alt="Line chart of accuracy against coverage as the confidence threshold rises, climbing from 0.73 at full coverage to 0.92 on the most confident quarter of decisions." width="100%">
+
+---
+
+## How it works
+
+```mermaid
+flowchart LR
+    S["state<br/><i>log · ticket · trace · diff</i>"] --> SEQ
+    Q["typed questions<br/><i>supplied per request</i>"] --> SEQ
+    SEQ["one sequence<br/>state + &lt;&lt;q&gt;&gt; question + &lt;&lt;l&gt;&gt; label …"]
+    SEQ --> ENC["ModernBERT-base<br/>150M · one forward pass"]
+    ENC --> H["Linear(d, 1)<br/>read at every &lt;&lt;l&gt;&gt; marker"]
+    H --> SM["softmax within<br/>each question"]
+    SM --> T["per-type temperature"]
+    T --> OUT["label + calibrated confidence<br/>for every question"]
+
+    style ENC fill:#2a78d6,stroke:#1c5cab,color:#fff
+    style OUT fill:#1baf7a,stroke:#158a60,color:#fff
+    style SEQ fill:#f0efec,stroke:#c3c2b7,color:#0b0b0b
+    style H fill:#f0efec,stroke:#c3c2b7,color:#0b0b0b
+    style SM fill:#f0efec,stroke:#c3c2b7,color:#0b0b0b
+    style T fill:#f0efec,stroke:#c3c2b7,color:#0b0b0b
+```
+
+### The label-embedding head
+
+The obvious design is one `nn.Linear` per question. It works, and it freezes the schema into the weights — add a question or rename a label and you retrain.
+
+Instead, **every candidate label is written into the input sequence** behind a `<<l>>` marker token, and the head is a single `Linear(d, 1)` read at each marker. Softmax runs within each question's own label set.
+
+```
+[CLS] {state json} <<q>> How risky was this? <<l>> 0: Benign… <<l>> 1: Low… <<q>> …
+                   ↑ question marker         ↑ one logit read off each of these
+```
+
+- The schema is **data at inference time** — new questions, new labels, a whole new workflow, with no retraining and no new parameters.
+- Labels attend to the state *and to each other*: a cross-encoder, not a bi-encoder.
+- One encoder pass answers every question about a state.
+
+Base encoder is **ModernBERT-base** (150M, bidirectional, 8192 context). A causal model works via `--encoder`, but pools differently — token 0 in a decoder-only model has only seen itself, so `[CLS]` pooling on one is a bug, not a shortcut.
+
+### Training on distributions, not labels
+
+The dataset ships **full annotator probability distributions**, not just argmax labels. Training on the argmax throws that away and directly causes overconfidence: a model taught that a 55/45 case is `true` learns to say 0.95, then is wrong 45% of the time while claiming near-certainty.
+
+So the loss is soft cross-entropy against the consensus distribution plus a Brier term — a proper scoring rule, which is what actually pushes probabilities toward honesty.
+
+It overshoots in the safe direction. The reliability curve sits **above** the diagonal at every bin: because the consensus targets are often flat (0.43 / 0.28 / 0.25 on a contested case), the model learns to emit flat distributions, so its top-1 confidence reads *lower* than its real accuracy. It is underconfident rather than overconfident — the direction you want if you are going to route on it, and one that a single temperature corrects.
+
+<img src="charts/3_reliability.png" alt="Reliability diagram: predicted confidence against observed accuracy, with every bin sitting above the diagonal, showing the model is underconfident across the whole range. Before and after per-type temperature scaling are almost identical." width="70%">
+
+---
+
+## Quick start
+
+### Colab (free T4, ~30 min, no API key)
+
+Upload [`jevlite_colab.ipynb`](../jevlite_colab.ipynb) — the whole repo is embedded in it — set **Runtime → T4 GPU**, and **Run all**.
+
+### Local
+
+```bash
+pip install -r requirements.txt
+
+python smoke_test.py --all      # validate all 1,600 rows, no GPU, ~2 min
+python 01_ceiling.py            # baselines you have to beat, $0
+python 02_train.py --epochs 20  # ~25 min on a T4
+python 03_calibrate.py          # per-type temperature, CPU, seconds
+python 04_eval.py               # official test split, vs Jev
+python 07_ensemble.py           # blend with the frozen probe
+python plots.py --outdir plots  # six charts
+python 05_serve.py --serve      # POST /decide {"state": ..., "questions": ...}
+python 06_export_onnx.py --quantize
+```
+
+Every script takes `--limit N` for a fast dry run, and `--config <workflow>` to train a single-domain specialist.
+
+### Apple Silicon: Core ML / Neural Engine
+
+The encoder + score head run on the Neural Engine as a fixed-shape Core ML
+program; the dynamic-schema bookkeeping (label-position gather, per-question
+softmax, temperature) stays on CPU, so adding questions still costs nothing.
+
+```bash
+# one-time: export fp16 ML Programs for the sequence buckets
+python export_coreml.py --ckpt jevlite.pt --seq-lens 256 512 1024 \
+    --min-macos 26            # fp16 @ macOS15 targets is broken - see ANE_REPORT
+
+python 05_serve.py --demo --backend coreml --compute-units cpu_and_ne
+python decide.py --backend coreml --compute-units cpu_and_ne
+python verify_coreml.py --ckpt jevlite.pt --limit 50    # parity report
+python benchmark_coreml.py --ckpt jevlite.pt            # latency report
+```
+
+Measured on M2 Max / macOS 26 (`BENCHMARK.md`, `ANE_REPORT.md`):
+
+- `cpu_and_ne` (GPU off) is **1.5–2.5× faster than Core ML CPU** and
+  **2.3–5.4× faster than PyTorch-CPU**; it ties PyTorch-MPS at seq 256 and
+  loses to it at 512/1024. `all` adds nothing — do not read it as ANE speed.
+- Full test split parity: **0.9965 decision agreement, zero accuracy
+  regression** (0.6445 vs 0.6430), confidence MAE 0.0024.
+- `fp32` export is bit-exact but cannot use the ANE — it is the parity
+  fallback.
+
+```python
+from engine import DecisionEngine
+engine = DecisionEngine(backend="coreml", compute_units="cpu_and_ne")
+engine.decide(state, questions)   # same {"label", "confidence", ...} shape
+```
+
+Production note: `backend="coreml"` runs inside `coreml_worker.py` — a
+supervised subprocess (respawn once on crash/timeout, periodic recycle) —
+because the ANE runtime can corrupt the host heap when bridged predict
+outputs are deallocated (details in `ANE_REPORT.md`). `--coreml-mode
+inprocess` exists for debugging only; `05_serve.py --serve` never runs ANE
+in the FastAPI process by default.
+
+Benchmark vs the real novllm judging workload (cached historical Jev
+verdicts, zero API cost):
+
+```bash
+python benchmark_jev_competition.py \
+    --input /path/to/queue_*.resplit.jsonl \
+    --jev-results /path/to/verdicts_*.resplit.jev.jsonl \
+    --backend coreml:cpu_and_ne --out artifacts/jev_competition.json
+```
+
+See `JEV_COMPETITION.md` for the paired-agreement, routing, and latency
+results. Historical Jev agreement is **not** accuracy — Jev is a reference
+system, not ground truth.
+
+### Files
+
+| | |
+|---|---|
+| `typed_schema.py` | the three primitives; `Question.noul/choice/score` builders |
+| `td_data.py` | dataset loading (HTTP fallback), marker-token encoding, collate |
+| `model.py` | `JevLite`, grouped softmax, soft-CE + Brier loss |
+| `probe.py` | frozen-encoder + logistic-regression baseline |
+| `metrics.py` | ECE (two kinds), Brier, NLL, TVD, risk-coverage |
+| `plots.py` | six charts, rendered from the JSON each step writes |
+| `01_…` → `07_…` | the pipeline |
+| `smoke_test.py` | correctness checks, no GPU needed |
+| `engine.py` | `DecisionEngine(backend=...)` — one `decide()`, swappable backend |
+| `export_coreml.py` | Core ML export; patches the ops coremltools 9 lacks |
+| `coreml_backend.py` | ANE engine: bucket select, pad, predict, CPU-side decide |
+| `coreml_worker.py` | subprocess isolation for the Core ML engine (production default) |
+| `benchmark_jev_competition.py` | Jev-vs-JevLite benchmark on the real novllm judge queues |
+| `verify_coreml.py` / `benchmark_coreml.py` | parity + latency harnesses |
+| `legacy/` | the earlier fixed-head version, kept for comparison |
+
+---
+
+## What the runs actually proved
+
+**A frozen encoder + logistic regression scores 0.670 — beating the fine-tuned model's 0.6240.** No training at all. This reproduces the [independent Banking77 finding](https://github.com/ickma2311/jev-baselines-eval) where the same baseline beat Jev by 10 points at 44× the speed. `01_ceiling.py` runs it first so you know what you're up against. If your fine-tune can't clear it, ship the probe.
+
+**The accuracy gap was undertraining — up to a point.** 6 epochs gave 0.568; 20 epochs with early stopping (best at epoch 9) gave 0.6195. Past that, training loss kept falling while validation flatlined. The binding constraint is **1,016 training cases, not model size or epochs** — which is why reaching for a bigger encoder first is the wrong instinct here.
+
+<img src="charts/2_training.png" alt="Two panels: training loss falling steadily from 1.40 to 0.93 across 15 epochs, and validation accuracy rising to a best of 0.653 at epoch 9 then flattening - the signature of memorisation rather than learning." width="100%">
+
+<img src="charts/6_ensemble.png" alt="Left: validation accuracy against blend weight, peaking at w=0.60. Right: test accuracy per configuration - model 0.624, probe 0.670, ensemble 0.697, sharpened ensemble 0.697 at ECE 0.057 - against Jev's 0.727." width="100%">
+
+**Post-hoc temperature scaling had three different outcomes, so don't generalise from one.** A no-op on the undertrained model (temperatures ≈ 1.0, ECE slightly worse), a mild help on the overfit one, and decisive on the ensemble: **ECE 0.156 → 0.057 with accuracy untouched.** Mixing two disagreeing distributions flattens them, so the blend was badly *under*confident; sharpening in probability space can't move the argmax, so it's free or nothing. Before sharpening, the ≥0.90 band held 0.5% of traffic; after, 25.4%.
+
+<img src="charts/5_per_type.png" alt="Accuracy and calibration error split by question type: noul 0.737, choice 0.630, score 0.524, with all three types calibrated well below Jev's 0.144 reference line." width="100%">
+
+**Single-annotator agreement is not a ceiling.** It's 0.659 here — what one human rater scores against the consensus. A model that always picks the consensus argmax scores 1.000, and Jev already exceeds it. The real limit is that **15.6% of test decisions are near-ties** (top two labels within 0.1), so the last few points of headline accuracy are mostly luck. Judge on calibration and coverage.
+
+---
+
+## Limitations
+
+**The ensemble trades away the dynamic schema.** The probe only answers questions it has training labels for. On an unseen question it returns uniform and the blend degrades to 0.6 × the neural model — so **0.6965 is the known-schema number and ~0.624 is the new-schema number.** Three configurations, different trade-offs, no single best. Always say which one a number came from.
+
+**Jev's 0.727 is zero-shot.** It never saw this dataset; this model trained on 1,016 in-domain cases from the same distribution and still came in lower. That makes the gap look worse, not better, and it's the accurate framing.
+
+**Small evaluation.** 400 test cases / 2,000 decisions. Differences under ~0.02 are not meaningful.
+
+**Jev's figures are quoted, not reproduced here.** Accuracy 0.727 and ECE 0.144 come from the typed-decisions benchmark; latency and pricing from the independent evaluations linked below.
+
+---
+
+## Traps worth knowing if you fork this
+
+- **10% of the dataset is a question shape the first rows never show.** Bare `noul` questions carry no `criteria` key at all. A 6-row smoke test passes and training then dies 300 rows in. `smoke_test.py --all` encodes every row for exactly this reason.
+- **Workflows disagree on label width** (16/17/18/20), so `torch.cat` across batches fails the moment a run spans more than one. Hence `pad_cat`.
+- **Unbounded temperature scaling on soft targets is degenerate** — the first fit returned T=400, which flattens everything to uniform, minimises NLL beautifully, and destroys the confidence signal. Bounded to [0.25, 5.0], and refused for any type with under 30 validation decisions.
+- **ONNX export below opset 18 produces an invalid graph** — torch emits `Split` with `num_outputs` regardless, and ORT then refuses to load it. Silent at export, fatal at load; hence the parity check.
+- **ONNX weights land in a 596 MB `.onnx.data` sidecar.** Serve both files or you load a graph with no weights. int8 (151 MB) shifts logits materially — recalibrate rather than reusing fp32 temperatures.
+- **Never lower `--max-len`.** States run 401–997 tokens (p50 588); 512 truncates 73% of them. Batches already pad to their own longest example, so the high cap costs nothing.
+
+---
+
+## Credits
+
+- **TypeSafe AI** for [Jev](https://www.mindstudio.ai/blog/jev-system-one-model-launch), the design this reproduces. Not affiliated with, endorsed by, or derived from their model.
+- [`LocalLLaMA/typed-decisions`](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) — the public benchmark.
+- [`answerdotai/ModernBERT-base`](https://huggingface.co/answerdotai/ModernBERT-base) — the encoder.
+- Prior open reproductions: [Verdict / OpenJev](https://github.com/Heman10x-NGU/Verdict-open-jev) (ModernBERT-151M + WebGPU playground) and [open-jev-deberta-v3-large](https://huggingface.co/com-kotobalabs/open-jev-deberta-v3-large).
+- Independent evaluations this repo's claims lean on: [baselines eval](https://github.com/ickma2311/jev-baselines-eval) (Banking77 / CLINC150), [phishing bench](https://github.com/anisselbd/jev-phishing-bench) (vs Claude Haiku 4.5), [OOD calibration](https://github.com/scienthoon/jev-ood-calibration) (per-type ECE).
+
+## License
+
+[Apache-2.0](../LICENSE).
+
+---
+
+<div align="center">
+
+**Keywords:** typed decision model · System One model · non-autoregressive classifier · TypeSafe Jev alternative · open source Jev · ModernBERT · structured output · calibrated confidence · LLM routing · agent observability · confidence thresholding · expected calibration error
+
+</div>

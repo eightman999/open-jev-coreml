@@ -1,0 +1,254 @@
+{
+  "level1_paired_agreement": {
+    "paired_n": 11842,
+    "unpaired_or_failed": 0,
+    "agreement": 0.0024489106569836176,
+    "disagreement_n": 11813,
+    "confusion_jev_x_jevlite": {
+      "content": {
+        "content": 0,
+        "noise": 1,
+        "uncertain": 27
+      },
+      "noise": {
+        "content": 4,
+        "noise": 29,
+        "uncertain": 11781
+      },
+      "uncertain": {
+        "content": 0,
+        "noise": 0,
+        "uncertain": 0
+      }
+    },
+    "jev_verdict_dist": {
+      "content": 28,
+      "noise": 11814,
+      "uncertain": 0
+    },
+    "jevlite_verdict_dist": {
+      "content": 4,
+      "noise": 30,
+      "uncertain": 11808
+    },
+    "confidence_agree": {
+      "n": 29,
+      "mean": 0.4743310344827586,
+      "median": 0.4693,
+      "p10": 0.41348,
+      "p90": 0.53
+    },
+    "confidence_disagree": {
+      "n": 11813,
+      "mean": 0.8606049098450859,
+      "median": 0.8882,
+      "p10": 0.7243200000000001,
+      "p90": 0.9566
+    },
+    "confidence_hist_agree": {
+      "0.00-0.50": 21,
+      "0.50-0.60": 7,
+      "0.60-0.70": 1,
+      "0.70-0.80": 0,
+      "0.80-0.90": 0,
+      "0.90-0.95": 0,
+      "0.95-1.01": 0
+    },
+    "confidence_hist_disagree": {
+      "0.00-0.50": 78,
+      "0.50-0.60": 239,
+      "0.60-0.70": 602,
+      "0.70-0.80": 1590,
+      "0.80-0.90": 4142,
+      "0.90-0.95": 3534,
+      "0.95-1.01": 1628
+    },
+    "tvd_probs_mean": 0.8396644823509543,
+    "truncated_inputs": 154,
+    "agreement_reliability": {
+      "0.00-0.50": {
+        "n": 99,
+        "agree_frac": 0.21212121212121213
+      },
+      "0.50-0.60": {
+        "n": 246,
+        "agree_frac": 0.028455284552845527
+      },
+      "0.60-0.70": {
+        "n": 603,
+        "agree_frac": 0.001658374792703151
+      },
+      "0.70-0.80": {
+        "n": 1590,
+        "agree_frac": 0.0
+      },
+      "0.80-0.90": {
+        "n": 4142,
+        "agree_frac": 0.0
+      },
+      "0.90-0.95": {
+        "n": 3534,
+        "agree_frac": 0.0
+      },
+      "0.95-1.01": {
+        "n": 1628,
+        "agree_frac": 0.0
+      }
+    }
+  },
+  "routing_table": [
+    {
+      "threshold": 0.6,
+      "local_frac": 0.9708664077014018,
+      "agreement_local": 8.697921196833956e-05,
+      "escalated_frac": 0.029133592298598243
+    },
+    {
+      "threshold": 0.7,
+      "local_frac": 0.9199459550751562,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.0800540449248438
+    },
+    {
+      "threshold": 0.8,
+      "local_frac": 0.7856780949163993,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.21432190508360072
+    },
+    {
+      "threshold": 0.9,
+      "local_frac": 0.43590609694308396,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.5640939030569161
+    },
+    {
+      "threshold": 0.95,
+      "local_frac": 0.13747677757135618,
+      "agreement_local": 0.0,
+      "escalated_frac": 0.8625232224286439
+    }
+  ],
+  "meta": {
+    "created": "2026-09-21 18:02:32 +0900",
+    "backend": "coreml:cpu_only",
+    "coreml_mode": "worker",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.11",
+      "machine": "arm64",
+      "hw_model": "Mac14,6"
+    },
+    "seed": 42,
+    "warmup": 50,
+    "batch_size": 1,
+    "timing_includes_tokenization": true,
+    "inputs": [
+      {
+        "path": "<local-path>",
+        "n": 1669,
+        "sha256": "b310f183b5cf5d5d98aa8b7cc1f4e627da62ccec06be04e4edc8fde0c96734ec"
+      },
+      {
+        "path": "<local-path>",
+        "n": 3536,
+        "sha256": "d010b27e825bf533300424ee395f8a15f0b4a616b99b3d07150e975b9c317968"
+      },
+      {
+        "path": "<local-path>",
+        "n": 2886,
+        "sha256": "5956517ce8b383e6ccd62fbf32d375b14af65d9e327249973a82e4c807e9555f"
+      },
+      {
+        "path": "<local-path>",
+        "n": 3751,
+        "sha256": "0230517ba7fea120ddf5a1273d1db98d8fa16bc754c2a6b32c2c6a65d82f436f"
+      }
+    ],
+    "jev_results": [
+      {
+        "path": "<local-path>",
+        "n": 1669,
+        "sha256": "2dfe1a5b705c9bab47d967b5b6e9d8f750307362180f70e26469180d36f5b170"
+      },
+      {
+        "path": "<local-path>",
+        "n": 3536,
+        "sha256": "a5e68752ca53a16c3faefac9ea55f095cc1d68e4d88a1c6b4e804200ab153752"
+      },
+      {
+        "path": "<local-path>",
+        "n": 2886,
+        "sha256": "436d24a5bc0bafffd06954fd51357965b9c6bce4129eaeb2f639de59b5353a68"
+      },
+      {
+        "path": "<local-path>",
+        "n": 3751,
+        "sha256": "1faffb16d998572ca5a4a2e8f406e8d55b337c19a90da1cab9ccfd4cef6db65f"
+      }
+    ],
+    "jev_duplicate_queue_ids": 0,
+    "task_semantics": {
+      "source": "novllm tools/judge_jev.py (Jev systemone payload)",
+      "source_sha256": "33339e674d66ef81b2d71567f85019c16d735848f175abd4cd86c9ed4f999919",
+      "instructions": "あなたは小説テキストのコーパス浄化判定器です。state は小説レコードの末尾付近の抜粋で、「候補区間」は除去候補としてマークされた範囲です。確認事項に基づき候補区間が何であるかを一つ選んでください。本文の要約・引用・再生成は不要です。",
+      "criteria": {
+        "noise": "除去すべき取得ノイズ: サイト案内文・ランキング/ブックマーク/評価の呼びかけ・作者の宣伝や前書き後書き・奥付メタデータ・ナビゲーション文字列など",
+        "content": "物語・本文の一部として残すべき文章",
+        "uncertain": "情報不足や境界が曖昧で判断できないもの"
+      },
+      "state_template": "対象レコード: {id} (category={cat})\\n確認事項: {q}\\n候補区間: 文字 {s}〜{e}\\n\\n{ctx[:6000]}",
+      "jevlite_mapping": "Question.choice(INSTR + '確認事項: ' + question, CRITERIA) - identical payload",
+      "known_differences": "Jev saw ctx[:6000] chars; JevLite encodes <=1024 tokens so long states lose tail characters (counted in truncated_inputs)"
+    },
+    "engine": {
+      "engine": "WorkerCoreMLEngine",
+      "compute_units": "cpu_only",
+      "encoder": "answerdotai/ModernBERT-base",
+      "encode_len": 1024
+    },
+    "items_out": "artifacts/jev_items_coreml_cpu_only.jsonl"
+  },
+  "level3_systems": {
+    "backend": {
+      "engine": "WorkerCoreMLEngine",
+      "compute_units": "cpu_only",
+      "encoder": "answerdotai/ModernBERT-base",
+      "encode_len": 1024
+    },
+    "load_s": 13.388079333002679,
+    "n_total": 11842,
+    "n_ok": 11842,
+    "n_failed": 0,
+    "wall_s": 2361.8426856250735,
+    "decisions_per_s": 5.013881776324131,
+    "chars_per_s": 2334.3176213875904,
+    "tokens_per_s": 3825.3652772851233,
+    "latency_ms": {
+      "p50": 193.8907915027812,
+      "p90": 210.9488417278044,
+      "p95": 223.05253352387805,
+      "p99": 275.36538446438504,
+      "mean": 199.40033694366892,
+      "max": 14263.26079107821
+    },
+    "cold_warmup_latency_ms": {
+      "n": 50,
+      "mean": 205.6675949972123,
+      "median": 198.4967915341258,
+      "p10": 192.27302077924833,
+      "p90": 226.3441631104797
+    },
+    "worker_restarts": 0,
+    "worker_recycles": 1,
+    "worker_stats": {
+      "ok": true,
+      "calls": 1842,
+      "uptime_s": 368.88411891600117,
+      "rss_bytes": 471760896,
+      "keepalive_len": 1842
+    },
+    "rss_parent_before": 584826880,
+    "rss_parent_after": 111460352,
+    "rss_parent_delta_mb": -473.366528
+  }
+}

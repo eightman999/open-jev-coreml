@@ -1,0 +1,186 @@
+{
+  "n_pairs": 150,
+  "systems": {
+    "jevlite-torch": {
+      "n_calls": 300,
+      "n_valid": 300,
+      "overall_accuracy_abstain_wrong": 0.01,
+      "coverage": 0.02666666666666667,
+      "accuracy_given_decision": 0.375,
+      "binary_forced_argmax_accuracy": 0.51,
+      "binary_forced_argmax_n": 300,
+      "selective_risk": 0.625,
+      "abstention_rate": 0.9733333333333334,
+      "wrong_answer_rate": 0.016666666666666666,
+      "first_position_rate_decided": 0.75,
+      "strict_pair_accuracy": 0.0,
+      "swap_consistency": 0.9466666666666667,
+      "consistency_detail": {
+        "both_uncertain": 142,
+        "decisive_to_uncertain": 5,
+        "uncertain_to_decisive": 3,
+        "flip_A_to_B": 0,
+        "flip_B_to_A": 0
+      },
+      "failures": {},
+      "latency": {
+        "mean": 0.05284333333333333,
+        "p50": 0.052,
+        "p95": 0.055
+      },
+      "confidence_buckets": {
+        "0.2-0.4": {
+          "n": 13,
+          "overall_accuracy_abstain_wrong": 0.07692307692307693
+        },
+        "0.4-0.6": {
+          "n": 177,
+          "overall_accuracy_abstain_wrong": 0.011299435028248588
+        },
+        "0.6-0.8": {
+          "n": 108,
+          "overall_accuracy_abstain_wrong": 0.0
+        },
+        "0.8-1.0": {
+          "n": 2,
+          "overall_accuracy_abstain_wrong": 0.0
+        }
+      },
+      "truncation": {
+        "<=512": {
+          "n": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "accuracy_given_decision": null,
+          "coverage": null
+        },
+        "513-1024": {
+          "n": 26,
+          "overall_accuracy_abstain_wrong": 0.07692307692307693,
+          "accuracy_given_decision": 1.0,
+          "coverage": 0.07692307692307693
+        },
+        ">1024": {
+          "n": 274,
+          "overall_accuracy_abstain_wrong": 0.0036496350364963502,
+          "accuracy_given_decision": 0.16666666666666666,
+          "coverage": 0.021897810218978103
+        },
+        "truncated": {
+          "n": 274,
+          "overall_accuracy_abstain_wrong": 0.0036496350364963502,
+          "accuracy_given_decision": 0.16666666666666666,
+          "coverage": 0.021897810218978103
+        }
+      },
+      "original_order_accuracy": 0.006666666666666667,
+      "swapped_order_accuracy": 0.013333333333333334,
+      "per_split": {
+        "gpt": {
+          "n_calls": 300,
+          "overall_accuracy_abstain_wrong": 0.01,
+          "coverage": 0.02666666666666667
+        },
+        "claude": {
+          "n_calls": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "coverage": null
+        }
+      },
+      "per_source": {
+        "mmlu-pro-biology": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.045454545454545456,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-business": {
+          "n_calls": 14,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": true
+        },
+        "mmlu-pro-chemistry": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-computer science": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-economics": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.09090909090909091,
+          "low_n": false
+        },
+        "mmlu-pro-engineering": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-health": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-history": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-law": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-math": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-other": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.045454545454545456,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-philosophy": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.045454545454545456,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-physics": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.0,
+          "low_n": false
+        },
+        "mmlu-pro-psychology": {
+          "n_calls": 22,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "coverage": 0.045454545454545456,
+          "low_n": false
+        }
+      }
+    }
+  },
+  "meta": {
+    "dataset": "ScalerLab/JudgeBench",
+    "dataset_sha256": "29676f075e2c75898bb21af9eaf72a3731f27f385f1b682af4dc9ea03dcebfcf",
+    "pairs": 150,
+    "git_commit": "6a89533",
+    "host": "EMBP.local",
+    "created": "2026-09-22 02:55:07",
+    "note": "JudgeBench label is the only gold; Jev is a system under test, not a reference."
+  }
+}

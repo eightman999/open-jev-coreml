@@ -1,0 +1,42 @@
+{
+  "ckpt": "jevlite.pt",
+  "split": "test",
+  "n_rows": 25,
+  "skipped": 0,
+  "max_bucket": 1024,
+  "compute_units": {
+    "cpu_only": {
+      "max_abs_logit_err": 2.0742416381835938e-05,
+      "mean_abs_logit_err": 3.917827598343138e-06,
+      "decision_agreement": 1.0,
+      "confidence_mae": 2.3843273925777452e-05,
+      "n_decisions": 125,
+      "coreml_accuracy": 0.728,
+      "torch_accuracy": 0.728,
+      "accuracy_regression_pp": 0.0,
+      "wall_s": 6.404340982437134
+    },
+    "cpu_and_ne": {
+      "max_abs_logit_err": 2.0742416381835938e-05,
+      "mean_abs_logit_err": 3.917827598343138e-06,
+      "decision_agreement": 1.0,
+      "confidence_mae": 2.3843273925777452e-05,
+      "n_decisions": 125,
+      "coreml_accuracy": 0.728,
+      "torch_accuracy": 0.728,
+      "accuracy_regression_pp": 0.0,
+      "wall_s": 6.415678977966309
+    },
+    "all": {
+      "max_abs_logit_err": 1.8358230590820312e-05,
+      "mean_abs_logit_err": 3.3417179565731203e-06,
+      "decision_agreement": 1.0,
+      "confidence_mae": 2.3843273925777452e-05,
+      "n_decisions": 125,
+      "coreml_accuracy": 0.728,
+      "torch_accuracy": 0.728,
+      "accuracy_regression_pp": 0.0,
+      "wall_s": 1.8963749408721924
+    }
+  }
+}

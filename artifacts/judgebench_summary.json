@@ -1,0 +1,425 @@
+{
+  "n_pairs": 620,
+  "systems": {
+    "jev": {
+      "n_calls": 1240,
+      "n_valid": 1240,
+      "overall_accuracy_abstain_wrong": 0.7330645161290322,
+      "coverage": 0.967741935483871,
+      "accuracy_given_decision": 0.7575,
+      "binary_forced_argmax_accuracy": 0.7516129032258064,
+      "binary_forced_argmax_n": 1240,
+      "selective_risk": 0.24250000000000005,
+      "abstention_rate": 0.03225806451612903,
+      "wrong_answer_rate": 0.2346774193548387,
+      "first_position_rate_decided": 0.54,
+      "strict_pair_accuracy": 0.6258064516129033,
+      "swap_consistency": 0.7790322580645161,
+      "consistency_detail": {
+        "both_uncertain": 14,
+        "decisive_to_uncertain": 5,
+        "uncertain_to_decisive": 7,
+        "flip_A_to_B": 86,
+        "flip_B_to_A": 39
+      },
+      "failures": {},
+      "latency": {
+        "mean": 0.6347451612903225,
+        "p50": 0.607,
+        "p95": 0.79305
+      },
+      "confidence_buckets": {
+        "0.0-0.2": {
+          "n": 77,
+          "overall_accuracy_abstain_wrong": 0.4805194805194805
+        },
+        "0.2-0.4": {
+          "n": 246,
+          "overall_accuracy_abstain_wrong": 0.5975609756097561
+        },
+        "0.4-0.6": {
+          "n": 244,
+          "overall_accuracy_abstain_wrong": 0.6065573770491803
+        },
+        "0.6-0.8": {
+          "n": 241,
+          "overall_accuracy_abstain_wrong": 0.7385892116182573
+        },
+        "0.8-1.0": {
+          "n": 432,
+          "overall_accuracy_abstain_wrong": 0.9236111111111112
+        }
+      },
+      "truncation": {
+        "<=512": {
+          "n": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "accuracy_given_decision": null,
+          "coverage": null
+        },
+        "513-1024": {
+          "n": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "accuracy_given_decision": null,
+          "coverage": null
+        },
+        ">1024": {
+          "n": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "accuracy_given_decision": null,
+          "coverage": null
+        },
+        "truncated": {
+          "n": 0,
+          "overall_accuracy_abstain_wrong": null,
+          "accuracy_given_decision": null,
+          "coverage": null
+        }
+      },
+      "original_order_accuracy": 0.7451612903225806,
+      "swapped_order_accuracy": 0.7209677419354839,
+      "per_split": {
+        "gpt": {
+          "n_calls": 700,
+          "overall_accuracy_abstain_wrong": 0.7285714285714285,
+          "coverage": 0.9671428571428572
+        },
+        "claude": {
+          "n_calls": 540,
+          "overall_accuracy_abstain_wrong": 0.7388888888888889,
+          "coverage": 0.9685185185185186
+        }
+      },
+      "per_source": {
+        "livebench-math": {
+          "n_calls": 180,
+          "overall_accuracy_abstain_wrong": 0.7666666666666667,
+          "coverage": 0.95,
+          "low_n": false
+        },
+        "livebench-reasoning": {
+          "n_calls": 298,
+          "overall_accuracy_abstain_wrong": 0.6174496644295302,
+          "coverage": 0.9731543624161074,
+          "low_n": false
+        },
+        "livecodebench": {
+          "n_calls": 146,
+          "overall_accuracy_abstain_wrong": 0.726027397260274,
+          "coverage": 0.952054794520548,
+          "low_n": false
+        },
+        "mmlu-pro-biology": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.75,
+          "coverage": 0.9545454545454546,
+          "low_n": false
+        },
+        "mmlu-pro-business": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.75,
+          "coverage": 0.9545454545454546,
+          "low_n": false
+        },
+        "mmlu-pro-chemistry": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.7954545454545454,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-computer science": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.8636363636363636,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-economics": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.75,
+          "coverage": 0.9772727272727273,
+          "low_n": false
+        },
+        "mmlu-pro-engineering": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.7727272727272727,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-health": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.7272727272727273,
+          "coverage": 0.9545454545454546,
+          "low_n": false
+        },
+        "mmlu-pro-history": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.7727272727272727,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-law": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.8181818181818182,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-math": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.8863636363636364,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-other": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.7954545454545454,
+          "coverage": 0.9090909090909091,
+          "low_n": false
+        },
+        "mmlu-pro-philosophy": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.8636363636363636,
+          "coverage": 1.0,
+          "low_n": false
+        },
+        "mmlu-pro-physics": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.8181818181818182,
+          "coverage": 0.9772727272727273,
+          "low_n": false
+        },
+        "mmlu-pro-psychology": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.5681818181818182,
+          "coverage": 0.9090909090909091,
+          "low_n": false
+        }
+      }
+    },
+    "jevlite-coreml": {
+      "n_calls": 1240,
+      "n_valid": 1240,
+      "overall_accuracy_abstain_wrong": 0.11209677419354838,
+      "coverage": 0.23870967741935484,
+      "accuracy_given_decision": 0.46959459459459457,
+      "binary_forced_argmax_accuracy": 0.49112903225806454,
+      "binary_forced_argmax_n": 1240,
+      "selective_risk": 0.5304054054054055,
+      "abstention_rate": 0.7612903225806451,
+      "wrong_answer_rate": 0.12661290322580646,
+      "first_position_rate_decided": 0.0,
+      "strict_pair_accuracy": 0.0,
+      "swap_consistency": 0.5967741935483871,
+      "consistency_detail": {
+        "both_uncertain": 370,
+        "decisive_to_uncertain": 112,
+        "uncertain_to_decisive": 92,
+        "flip_A_to_B": 0,
+        "flip_B_to_A": 46
+      },
+      "failures": {},
+      "latency": {
+        "mean": 0.47173548387096775,
+        "p50": 0.4595,
+        "p95": 0.9500999999999998
+      },
+      "confidence_buckets": {
+        "0.4-0.6": {
+          "n": 975,
+          "overall_accuracy_abstain_wrong": 0.13846153846153847
+        },
+        "0.6-0.8": {
+          "n": 256,
+          "overall_accuracy_abstain_wrong": 0.015625
+        },
+        "0.8-1.0": {
+          "n": 9,
+          "overall_accuracy_abstain_wrong": 0.0
+        }
+      },
+      "truncation": {
+        "<=512": {
+          "n": 2,
+          "overall_accuracy_abstain_wrong": 0.0,
+          "accuracy_given_decision": null,
+          "coverage": 0.0
+        },
+        "513-1024": {
+          "n": 464,
+          "overall_accuracy_abstain_wrong": 0.10775862068965517,
+          "accuracy_given_decision": 0.4854368932038835,
+          "coverage": 0.22198275862068967
+        },
+        ">1024": {
+          "n": 774,
+          "overall_accuracy_abstain_wrong": 0.11498708010335917,
+          "accuracy_given_decision": 0.46113989637305697,
+          "coverage": 0.24935400516795866
+        },
+        "truncated": {
+          "n": 774,
+          "overall_accuracy_abstain_wrong": 0.11498708010335917,
+          "accuracy_given_decision": 0.46113989637305697,
+          "coverage": 0.24935400516795866
+        }
+      },
+      "original_order_accuracy": 0.10161290322580645,
+      "swapped_order_accuracy": 0.12258064516129032,
+      "per_split": {
+        "gpt": {
+          "n_calls": 700,
+          "overall_accuracy_abstain_wrong": 0.10714285714285714,
+          "coverage": 0.2357142857142857
+        },
+        "claude": {
+          "n_calls": 540,
+          "overall_accuracy_abstain_wrong": 0.11851851851851852,
+          "coverage": 0.24259259259259258
+        }
+      },
+      "per_source": {
+        "livebench-math": {
+          "n_calls": 180,
+          "overall_accuracy_abstain_wrong": 0.06111111111111111,
+          "coverage": 0.16111111111111112,
+          "low_n": false
+        },
+        "livebench-reasoning": {
+          "n_calls": 298,
+          "overall_accuracy_abstain_wrong": 0.14429530201342283,
+          "coverage": 0.2751677852348993,
+          "low_n": false
+        },
+        "livecodebench": {
+          "n_calls": 146,
+          "overall_accuracy_abstain_wrong": 0.04794520547945205,
+          "coverage": 0.1232876712328767,
+          "low_n": false
+        },
+        "mmlu-pro-biology": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.11363636363636363,
+          "coverage": 0.20454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-business": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.13636363636363635,
+          "coverage": 0.36363636363636365,
+          "low_n": false
+        },
+        "mmlu-pro-chemistry": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.11363636363636363,
+          "coverage": 0.20454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-computer science": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.1590909090909091,
+          "coverage": 0.3409090909090909,
+          "low_n": false
+        },
+        "mmlu-pro-economics": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.18181818181818182,
+          "coverage": 0.36363636363636365,
+          "low_n": false
+        },
+        "mmlu-pro-engineering": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.11363636363636363,
+          "coverage": 0.22727272727272727,
+          "low_n": false
+        },
+        "mmlu-pro-health": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.022727272727272728,
+          "coverage": 0.20454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-history": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.1590909090909091,
+          "coverage": 0.18181818181818182,
+          "low_n": false
+        },
+        "mmlu-pro-law": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.1590909090909091,
+          "coverage": 0.3181818181818182,
+          "low_n": false
+        },
+        "mmlu-pro-math": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.13636363636363635,
+          "coverage": 0.20454545454545456,
+          "low_n": false
+        },
+        "mmlu-pro-other": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.06818181818181818,
+          "coverage": 0.2727272727272727,
+          "low_n": false
+        },
+        "mmlu-pro-philosophy": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.1590909090909091,
+          "coverage": 0.3409090909090909,
+          "low_n": false
+        },
+        "mmlu-pro-physics": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.09090909090909091,
+          "coverage": 0.22727272727272727,
+          "low_n": false
+        },
+        "mmlu-pro-psychology": {
+          "n_calls": 44,
+          "overall_accuracy_abstain_wrong": 0.1590909090909091,
+          "coverage": 0.3409090909090909,
+          "low_n": false
+        }
+      }
+    }
+  },
+  "outcome_matrix_original": {
+    "jl_abstain_jev_correct": 349,
+    "jev_only": 72,
+    "both_correct": 41,
+    "jl_abstain_jev_wrong": 113,
+    "both_wrong": 23,
+    "jevlite_only": 22
+  },
+  "outcome_matrix_swapped": {
+    "jl_abstain_jev_wrong": 132,
+    "jevlite_only": 26,
+    "jl_abstain_jev_correct": 350,
+    "jev_only": 47,
+    "both_correct": 50,
+    "both_wrong": 15
+  },
+  "outcome_matrix_strict_pair": {
+    "mixed_or_inconsistent": 340,
+    "jl_abstain_jev_correct": 239,
+    "jl_abstain_jev_wrong": 41
+  },
+  "outcome_matrix_strict_pair_detail": {
+    "jev=mixed+jl=abstain": 79,
+    "jev=mixed+jl=mixed": 58,
+    "jev=correct+jl=mixed": 149,
+    "jev=correct+jl=abstain": 239,
+    "jev=wrong+jl=abstain": 41,
+    "jev=wrong+jl=mixed": 40,
+    "jev=abstain+jl=abstain": 11,
+    "jev=abstain+jl=mixed": 3
+  },
+  "meta": {
+    "dataset": "ScalerLab/JudgeBench",
+    "dataset_sha256": "29676f075e2c75898bb21af9eaf72a3731f27f385f1b682af4dc9ea03dcebfcf",
+    "pairs": 620,
+    "git_commit": "f8adff8",
+    "host": "EMBP.local",
+    "created": "2026-09-22 00:56:34",
+    "note": "JudgeBench label is the only gold; Jev is a system under test, not a reference."
+  }
+}

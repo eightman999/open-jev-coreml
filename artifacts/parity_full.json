@@ -1,0 +1,20 @@
+{
+  "ckpt": "jevlite.pt",
+  "split": "test",
+  "n_rows": 400,
+  "skipped": 0,
+  "max_bucket": 1024,
+  "compute_units": {
+    "cpu_and_ne": {
+      "max_abs_logit_err": 0.1503596305847168,
+      "mean_abs_logit_err": 0.010852622799575329,
+      "decision_agreement": 0.9965,
+      "confidence_mae": 0.002354000699853897,
+      "n_decisions": 2000,
+      "coreml_accuracy": 0.6445,
+      "torch_accuracy": 0.643,
+      "accuracy_regression_pp": -0.15,
+      "wall_s": 72.95086312294006
+    }
+  }
+}

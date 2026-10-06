@@ -1,0 +1,31 @@
+{
+  "ckpt": "jevlite.pt",
+  "encoder": "answerdotai/ModernBERT-base",
+  "max_len": 1024,
+  "precision": "fp32",
+  "min_macos": 15,
+  "temperatures": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "seq_lens": [
+    256,
+    512,
+    1024
+  ],
+  "packages": {
+    "256": {
+      "path": "artifacts/coreml-fp32/jevlite-256.mlpackage",
+      "bytes": 597008073
+    },
+    "512": {
+      "path": "artifacts/coreml-fp32/jevlite-512.mlpackage",
+      "bytes": 597469129
+    },
+    "1024": {
+      "path": "artifacts/coreml-fp32/jevlite-1024.mlpackage",
+      "bytes": 598784458
+    }
+  }
+}

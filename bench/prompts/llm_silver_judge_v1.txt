@@ -1,0 +1,47 @@
+You are evaluating two candidate decisions produced for the same task.
+
+Use only the supplied task instructions, input, state, and available choices.
+
+Do not assume either candidate is more authoritative.
+Do not prefer a candidate because it is more cautious.
+Do not prefer a candidate because it makes a definite decision.
+Judge whether each candidate is justified by the supplied evidence and task definition.
+
+Return exactly one verdict:
+A
+B
+BOTH
+NEITHER
+AMBIGUOUS
+
+Definitions:
+A: only candidate A is justified
+B: only candidate B is justified
+BOTH: both are acceptable
+NEITHER: neither is acceptable
+AMBIGUOUS: insufficient information to decide reliably
+
+Return JSON only:
+{
+  "verdict": "...",
+  "confidence": 0.0,
+  "reason": "..."
+}
+
+TASK:
+{task}
+
+INPUT:
+{input_text}
+
+STATE:
+{state}
+
+AVAILABLE CHOICES:
+{choices}
+
+CANDIDATE A:
+{candidate_a}
+
+CANDIDATE B:
+{candidate_b}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-21",
+  "macos_version": "26.6.2",
+  "macos_build": "25G83",
+  "kernel": "Darwin EMBP.lan 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:18:48 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6020 arm64",
+  "chip": "Apple M2 Max",
+  "hw_model": "Mac14,6",
+  "ram_bytes": 34359738368,
+  "is_apple_silicon": true,
+  "python": "3.12.11",
+  "python_executable": ".venv/bin/python",
+  "torch": "2.14.0",
+  "transformers": "5.17.0",
+  "coremltools": "9.0",
+  "mps_available": true,
+  "cuda_available": false,
+  "xcodebuild": "Xcode 26.6",
+  "xcode_clt": "/Applications/Xcode.app/Contents/Developer",
+  "git_base_commit": "78d3b3a171f24d8d9a8dea18e027f9d3373fda45",
+  "git_branch": "feat/coreml-ane"
+}

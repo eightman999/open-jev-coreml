@@ -1,0 +1,29 @@
+b35a3c4 2026-09-19 19:26:23 +0500 Open Jev: a typed decision engine trainable on a free Colab T4
+59699a7 2026-09-19 19:35:08 +0500 README: self-hosted header, result charts, architecture diagram
+8a1cd0b 2026-09-19 19:41:20 +0500 Charts rendered from the real run artifacts, plus the reliability diagram
+78d3b3a 2026-09-19 23:58:47 +0500 Fix two bugs the interactive console surfaced, add decide.py
+f5ed424 2026-09-21 02:13:40 +0900 feat: add MPS device selection and environment audit
+b756749 2026-09-21 02:26:31 +0900 feat: add Core ML export with token-logits reformulation
+b55e959 2026-09-21 02:36:42 +0900 feat: add CoreML engine + parity harness
+365869c 2026-09-21 03:04:16 +0900 test: add parity suite with subprocess-isolated Core ML engine
+17a6c1b 2026-09-21 03:43:01 +0900 fix: fp16 export needs min-macOS 26; add reports and benchmark
+b56bdb0 2026-09-21 03:57:43 +0900 fix: checkpoint-less load, dead --warmup flag, worker respawn loop
+961af8f 2026-09-21 17:42:15 +0900 refactor: extract production CoreML worker backend
+bfbb218 2026-09-21 17:42:23 +0900 fix: isolate ANE inference from serving process
+7e53597 2026-09-21 17:42:23 +0900 test: cover worker restart timeout and lifecycle
+a135546 2026-09-21 17:44:34 +0900 bench: add historical Jev competition harness
+446262a 2026-09-21 20:08:10 +0900 docs: report Jev vs local ANE results on real novllm workload
+98e2993 2026-09-21 22:39:33 +0900 feat: add LLM silver-judge harness for Jev-vs-JevLite evaluation
+6487825 2026-09-21 22:39:33 +0900 test: cover silver-judge classification and lifecycle
+70d4812 2026-09-21 22:39:33 +0900 eval: gemma-4-31b-it silver-judge results over 400 cases
+92ecacc 2026-09-21 22:39:52 +0900 chore: make bench a package for test imports
+7498462 2026-09-22 00:30:15 +0900 feat: add JudgeBench external-gold evaluation harness
+f8adff8 2026-09-22 00:30:15 +0900 eval: JudgeBench external-gold results for Jev and JevLite
+e0437c5 2026-09-22 01:01:30 +0900 fix: correct JudgeBench metric aggregation and naming
+ad07ec0 2026-09-22 01:01:30 +0900 test: add JudgeBench baseline and strict-pair sanity checks
+8e280ae 2026-09-22 01:01:30 +0900 eval: audit JevLite never-A label pathology
+6fda89b 2026-09-22 02:20:20 +0900 test: add positional-prior probe harness
+6a89533 2026-09-22 02:20:27 +0900 eval: audit base-model positional prior vs JevLite checkpoint
+9a0745f 2026-09-22 03:01:20 +0900 fix: position-symmetric label serialization + train-time permutation
+6cb62c0 2026-09-22 03:01:29 +0900 eval: measure pos0 bias under symmetric serialization
+fecc109 2026-09-22 13:54:25 +0900 feat: wire slots+permutation into 02_train, checkpoint-owned serialization
